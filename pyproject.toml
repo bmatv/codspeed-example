@@ -7,5 +7,6 @@ version = "2025.0.0"
 name = "codspeed-example"
 requires-python = ">= 3.13"
 dependencies = [
+    "numpy>=2.3.4",
     "pytest-codspeed>=4.2.0",
 ]

@@ -1,11 +1,9 @@
 import pytest
+import numpy as np
 
 def sum_squares(arr):
     """Sum the squares of the numbers in an array."""
-    total = 0
-    for x in arr:
-        total += x * x
-    return total
+    return (np.asarray(arr)**2).sum()
 
 # Your tests can also be benchmarks
 @pytest.mark.benchmark
