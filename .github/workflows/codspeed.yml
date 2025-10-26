@@ -1,0 +1,26 @@
+name: CodSpeed Benchmarks
+
+on:
+  push:
+    branches:
+      - "main" # or "master"
+  pull_request:
+
+jobs:
+  benchmarks:
+    name: Run benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: pip install pytest pytest-codspeed
+      - name: Run the benchmarks
+        uses: CodSpeedHQ/action@v4
+        with:
+          mode: instrumentation
+          run: pytest tests/ --codspeed
+          token: ${{ secrets.CODSPEED_TOKEN }} # optional for public repos
